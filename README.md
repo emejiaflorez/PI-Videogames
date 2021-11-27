@@ -1,11 +1,12 @@
 <p align='left'>
     <img src='https://static.wixstatic.com/media/85087f_0d84cbeaeb824fca8f7ff18d7c9eaafd~mv2.png/v1/fill/w_160,h_30,al_c,q_85,usm_0.66_1.00_0.01/Logo_completo_Color_1PNG.webp' </img>
+    
 </p>
 
 # Individual Project - Henry Videogames
 
 <p align="right">
-  <img height="200" src="./videogame.png" />
+  <img height="250" src="./videogame.png" />
 </p>
 
 ## Objetivos del Proyecto
@@ -72,9 +73,9 @@ __IMPORTANTE__: Para las funcionalidades de filtrado y ordenamiento NO pueden ut
 
 ### Únicos Endpoints/Flags que pueden utilizar
 
-  - GET https://api.rawg.io/api/games
+  - GET https://api.rawg.io/api/games?key=3d34e9d1d90a480f819462a20aed91e8
   - GET https://api.rawg.io/api/games?search={game}
-  - GET https://api.rawg.io/api/genres
+  - GET https://api.rawg.io/api/genres?key=3d34e9d1d90a480f819462a20aed91e8
   - GET https://api.rawg.io/api/games/{id}
 
 ### Requerimientos mínimos:
