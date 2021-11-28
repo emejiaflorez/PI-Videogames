@@ -1,4 +1,4 @@
-const {Platform } = require("../db");
+const { Platform } = require("../db");
 const axios = require('axios');
 const {API_END_POINT_ALL_GAMES} = process.env;
 
@@ -29,4 +29,14 @@ async function Precarga_PlatForms(){
       }
 }
 
-module.exports = { Precarga_PlatForms }
+//Obtener todas las Plataformas de la BD despues de haber sido precargados desde la Api--------------
+async function Get_Platforms(req, res, next) {
+  try {
+      const platforms = await Platform.findAll({attributes: ['id', 'name']});
+      res.json(platforms || 'Platforms not found ....');
+     }
+  catch (error) {next(error)}
+}
+
+
+module.exports = { Precarga_PlatForms, Get_Platforms}

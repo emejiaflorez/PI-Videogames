@@ -19,7 +19,7 @@ async function Precarga_Genres(){
  async function Get_Genres(req, res, next) {
     try {
         const genres = await Genre.findAll({attributes: ['id', 'name']});
-        res.json(genes || 'Genres not found ....');
+        res.json(genres || 'Genres not found ....');
        }
     catch (error) {next(error)}
  }
