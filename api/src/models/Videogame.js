@@ -9,7 +9,7 @@ module.exports = (sequelize) => {
       description : {type: DataTypes.STRING,  allowNull: false,},
       released    : {type: DataTypes.DATE,    allowNull: true,},
       rating      : {type: DataTypes.DECIMAL, allowNull: true,},
-      platforms   : {type: DataTypes.STRING,  allowNull: true,},
+      platforms   : {type: DataTypes.STRING,  allowNull: false,},
       image       : {type: DataTypes.STRING,  allowNull: true,},
   });
 };

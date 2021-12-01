@@ -1,0 +1,11 @@
+export const ADD_VIDEOGAMES     = "ADD_VIDEOGAMES";
+export const GET_ALL_VIDEOS     = "GET_ALL_VIDEOS";
+export const GET_VIDEOS_BY_NAME = "GET_VIDEOS_BY_NAME";
+export const GET_VIDEO_DETAIL   = "GET_VIDEO_DETAIL";
+export const GET_ALL_GENRES     = "GET_ALL_VIDEOS";
+export const GET_ALL_PLATFORMS  = "GET_ALL_VIDEOS";
+export const GET_VID_DETAIL     = "GET_VID_DETAIL";
+export const FILTER_BY_GENRE    = "FILTER_BY_GENRE";
+export const FILTER_BY_VIDEO    = "FILTER_BY_VIDEO";
+export const ORDERING_ACTION    = "ORDERING_ACTION";
+export const PAGING_ACTION      = "PAGING_ACTION";

@@ -47,11 +47,6 @@ async function Get_Videos (req, res){
       !name 
         ? res.json(allVideos.length ? allVideos : 'Video games Not found ...')
         : res.json(allVideos.length ? allVideos.slice(0, 15) : 'Video games Not found ...');
-       
-      //   allVideos.slice(0, 15).map((e)=>{
-      //     console.log(e.id, "-", e.name)
-      //  })
-       
   }
   catch(error){res.send(error)}
 }
