@@ -1,20 +1,28 @@
 .home_Container {
       display: flex; 
-      flex-direction: column;  
+      flex-direction: column;   
       align-items: center; 
       background-color:black; 
       padding: 0;
-     
-     
 }
     
+.home_VideoContainer {
+     display: flex;
+     flex-direction: row;
+     flex-wrap: wrap;
+     align-items: center;
+     justify-content: center;
+     background-color: black; 
+     margin-bottom: 5vh;
+     padding: 5vh 0;
+}
 .home_Btn_Container {
      width: 100%;
      display: flex;
      justify-content: center;
      align-items: center;
      padding-top: 2vh;
-     background-color:white; 
+     background-color:black; 
 }
    
 .home_Btn {
@@ -28,13 +36,9 @@
      
 }
    
-.home_Btn:first-of-type {
-     border-right: none;
-}
-   
 .home_Btn:hover {
      cursor: pointer;
-     background-color: gray;
+     background-color: rgb(95, 93, 93) ;
      color: #f3f1ed;
      border: 1px solid #f3f1ed;
 }

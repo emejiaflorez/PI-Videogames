@@ -1,9 +1,9 @@
 .nav_Container {
-      width: 100%;
+      width: 96%;
       height: 0%;
       display: flex;
       justify-content: space-between;
-      background-color: rgb(110, 109, 109) ;
+      background-color: rgb(95, 93, 93) ;
       align-items: center;
       padding:1cm ;
       background-image: url('../../assets/videogame.png');    

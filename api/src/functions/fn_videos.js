@@ -36,7 +36,7 @@ async function Get_Videos (req, res){
       //condition.attributes = { exclude: ['createdAt','updatedAt'] }
      
       //Consulta de Generos asociados a los videos desde la B.D
-      const dbVideos = await Videogame.findAll(condition, {include: Genre });
+      const dbVideos = await Videogame.findAll({include: Genre },condition);
       
       //Traida de los Datos desde la Api_Externa.
       const apiVideos = (await axios.get(url)).data.results;
@@ -58,7 +58,7 @@ async function Get_Video_ById (req, res){
     
   //Busqueda en la Base de Datos   
     if (isNaN(id)) {
-       const dbVideo = await Videogame.findOne({ where: {id: id}}, {include : Genre}) 
+       const dbVideo = await Videogame.findOne({include : Genre},{ where: {id: id}}) 
        res.json(dbVideo)
     }
     else 

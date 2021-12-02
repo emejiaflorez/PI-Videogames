@@ -1,0 +1,54 @@
+.card_Container {
+      width: 17%;
+      display: flex;
+      margin: 0.5%;
+      padding: 0.5%;
+      background-color: black;
+      border: 2px solid rgb(155, 153, 153);
+      /* border: 2px solid red; */
+      border-radius: 10px;
+      /* justify-content: center; */
+}
+   
+.card_ImgContainer {
+      width: 2%;
+      margin-right: 1%;
+}
+    
+.card_Image {
+      width : 320px;
+      height: 195px;
+      
+}
+    
+.card_TextContainer {
+      text-align: center;
+      margin-top: 6cm;
+}
+    
+.card_Link {
+      text-decoration: none;
+}
+    
+.card_Link:hover {
+      text-decoration:underline;
+}
+   
+.card_Name {
+      font-size: 20px;
+      margin-bottom: 0;
+      color :red;
+}
+    
+.card_Genres1 {
+      font-size: 15px;
+      /* margin-top: 0; */
+      color: red
+}
+
+.card_Genres2 {
+      font-size: 15px;
+      /* margin-top: 0; */
+      color: white;
+}
+   
