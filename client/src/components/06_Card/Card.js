@@ -6,11 +6,8 @@ const Card_Dog = ({id, name, image, genres }) => {
     let generos=[]; genres.map(e=> generos.push(e.name))
     return (
         <div className = 'card_Container' key = {id}>
-           <p className = 'card_ImgContainer'>
-              <img className = 'card_Image'  src = {image} alt = 'Videogames image' />
-           </p> 
-
-           <div className = 'card_TextContainer' >  
+            <img className = 'card_Image'  src = {image} alt = 'Videogames image' />
+            <div className = 'card_TextContainer' >  
                <NavLink className = 'card_Link' to = {`/videos/${id}`}>
                    <h3 className ='card_Name'> {name}</h3>
                </NavLink>

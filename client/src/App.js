@@ -3,9 +3,8 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Landing from "./components/01_Landing/Landing.js";
 import Home    from "./components/02_Home/Home.js";
-import NavBar  from "./components/03_Navbar/Navbar.js";
-// import Video   from "./components/07_Video_Det/Video.js";
-// import Form    from "./components/10_Form/Form.js";
+import Video   from "./components/07_Video_Det/VideoDetail.js";
+import Form    from "./components/10.Form/Form.js";
 
 function App() {
   return (
@@ -14,9 +13,8 @@ function App() {
          <Switch>
             <Route exact path = "/" component = { Landing }/>
             <Route exact path = "/home" component = { Home }/>
-            <Route path = "/home" component = { NavBar }/>
-            {/* <Route path = "/video/:id" component = { Video }/>
-            <Route path = "/home/add" component = { Form }/>  */}
+            <Route path = "/videos/:id" component = { Video }/>
+            <Route path = "/videogame/add" component = { Form }/> 
           </Switch>
       </div>
     </BrowserRouter>

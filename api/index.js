@@ -23,7 +23,7 @@ const { Precarga_Genres   } = require('./src/functions/fn_genres');
 const { Precarga_PlatForms} = require('./src/functions/fn_platforms');
 
 // Syncing all the models at once.
-conn.sync({ force: false }).then(() => {
+conn.sync({ force: true }).then(() => {
   server.listen(3001, async () => {
     console.log('%s listening at 3001 - Servidor Escuchando puerto 3001');
     

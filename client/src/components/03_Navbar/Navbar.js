@@ -32,7 +32,7 @@ function NavBar() {
                 <option value='AZ'>Name (Asc)</option>
                 <option value='ZA'>Name (Desc)</option>
                 <option value='Rating_Asc'>Rating (Asc)</option>
-                <option value='Rating_Desc'>rating (Desc)</option>
+                <option value='Rating_Desc'>Rating (Desc)</option>
               </select>
             </div>
           </div>

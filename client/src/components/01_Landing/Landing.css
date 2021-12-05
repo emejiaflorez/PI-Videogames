@@ -16,7 +16,10 @@
       color:rgb(212, 37, 37);
     }
     
-.lan_text {font-size: 1.6em;}
+.lan_text {
+  font-size: 1.6em;
+  color:rgb(212, 37, 37);
+}
     
 .lan_btn {
       width: 40%;
@@ -43,6 +46,6 @@
     }
     
 .lan_foot {
-  font-size: 1.1em;
+  font-size: 1.2em;
   color: rgb(212, 37, 37);
 }

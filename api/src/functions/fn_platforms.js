@@ -22,11 +22,11 @@ async function Precarga_PlatForms(){
 
       await Promise.all(plat_forms.map((p) => Platform.findOrCreate({where:{id: p.id, name: p.name}})))
       return "successfully preloaded platforms ....."
-      }
+    }
     catch (error) {
        console.log(error);
        return "Platforms have not been uploaded ....."
-      }
+    }
 }
 
 //Obtener todas las Plataformas de la BD despues de haber sido precargados desde la Api--------------

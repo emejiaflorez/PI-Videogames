@@ -1,0 +1,117 @@
+.form_Container{
+      display: flex; 
+      flex-direction: column;   
+      align-items: center; 
+      background-color:black; 
+      padding-top:0%;
+      height: 100vh;
+      background-image: url(../../assets/landing_page.jpg);
+      background-size: cover;
+      background-repeat: no-repeat;
+}
+
+
+.form_Title {
+      color:red;
+      
+}
+
+.form_TextContainer{
+      width: 100%;
+      color:White;
+      font-size:22px;
+      display: flex; 
+      flex-direction: column; 
+      justify-content:center; 
+      align-items:left;  
+      margin-top: 0.30cm;
+      margin-right: 7cm;
+      padding-top:-2%;
+}
+
+.form_BtnContainer {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 2vh;
+      /* background-color:black;  */
+ }
+
+.form_Btn {
+      width: 100%;
+      background-color: #f3f1ed;
+      border: 1px solid gray;
+      border-radius: 0.50em;
+      line-height: 2rem;
+      font-size:1.3rem;
+      padding-bottom: 0.5vh ;
+      
+ }
+    
+ .form_Btn:hover {
+      cursor: pointer;
+      background-color: black ;
+      color: white;
+      border: 1px solid red;
+ }
+
+ .input {
+       width: 101%;
+       height: 50%;
+       font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+       font-size:20px;
+       border-radius:7px;
+       background-color:transparent;
+       color:white;
+       border-color:red;
+ }
+
+ .input:hover {
+      cursor: pointer;
+      background-color: black ;
+      color: white;
+      border: 1px solid red;
+ }
+
+ .inputDescription {
+      width: 101%;
+      height: 70%;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      font-size:20px;
+      border-radius:7px;
+      background-color:transparent;
+      color:white;
+      border-color:red;
+}
+
+.inputDescription:hover {
+     cursor: pointer;
+     background-color: black ;
+     color: white;
+     border: 1px solid red;
+}
+
+ .label {
+       color: white;
+       padding-top: 1%;
+       justify-content:left;
+ }
+ 
+ .select {
+      width: 101%;
+      height: 80%;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      font-size:20px;
+      border-radius:15px;
+      background-color:transparent;
+      color:white;
+      border-color:red;
+ }
+
+ .select:hover {
+      cursor: pointer;
+      background-color: black ;
+      color: red;
+      border: 1px solid red;
+ }

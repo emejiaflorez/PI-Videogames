@@ -1,23 +1,22 @@
 .card_Container {
-      width: 17%;
+      width: 19%;
       display: flex;
+      justify-content: center;
+      position: relative;
+      top:50%;
       margin: 0.5%;
       padding: 0.5%;
       background-color: black;
       border: 2px solid rgb(155, 153, 153);
-      /* border: 2px solid red; */
       border-radius: 10px;
-      /* justify-content: center; */
 }
    
-.card_ImgContainer {
-      width: 2%;
-      margin-right: 1%;
-}
-    
+ 
 .card_Image {
-      width : 320px;
-      height: 195px;
+      width : 340px;
+      height: 230px;
+      border-radius: 10px;
+      position: absolute;
       
 }
     

@@ -1,0 +1,111 @@
+.container{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top:55%;
+}
+
+.name{
+      color:red;
+      font-size: 250%;
+}
+
+.image1{
+    width :500px;
+    height:720px;
+    position: absolute;
+    top: 40%;
+    border-radius: 15px;
+    margin-right: 30cm;
+}
+
+.image2{
+    width :500px;
+    height:720px;
+    position: absolute;
+    top: 40%;
+    border-radius: 15px;
+    margin-left: 30cm;
+}
+
+.gen1 {
+    color:white;
+    font-size:22px;
+}
+.genres1 {
+    font-size: 22px;
+    color: red;
+    position: absolute;
+    top: 60%;
+}
+
+.plat1 {
+    color:white;
+    font-size:22px;
+}
+
+.platform1 {
+    font-size: 22px;
+    /* margin-top: 0; */
+    color: red;
+    position: absolute;
+    top: 100%;
+    /* margin-right: 20%; */
+}
+
+.rat1 {
+   color:white;
+   font-size:22px;
+}
+.rating-released{
+    font-size: 22px;
+    /* margin-top: 0; */
+    color: red;
+    position: absolute;
+    top: 140%;
+}
+
+.descrip {
+    color:red;
+    font-size:22px;
+}
+
+.description{
+    font-size: 19px;
+    color: white;
+    text-align:justify;
+}
+
+.des_container{
+    width:500px;
+    max-height:500px;
+    position: absolute;
+    top: 230%;
+}
+
+.gotoback {
+    width: 7%;
+    background-color: transparent;
+    border: 1px solid red;
+    border-radius: 0.40em;
+    line-height: 2rem;
+    font-size:1.5rem;
+    padding-bottom: 0.5vh ;
+    position: absolute;
+    top: 730%;
+}
+  
+.gotoback:hover {
+    cursor: pointer;
+    background-color: black ;
+    color: #f3f1ed;
+    border: 1px solid red;
+}
+  
+.link {
+    text-decoration: none;
+}
+  
+.link:hover {
+    color: #f3f1ed;
+}

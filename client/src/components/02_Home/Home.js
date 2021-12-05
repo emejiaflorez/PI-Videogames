@@ -1,7 +1,7 @@
  import React, { useState, useEffect } from 'react'
  import { useDispatch, useSelector } from 'react-redux'
  import { NavLink } from "react-router-dom";
- import { getAllVideos } from "../../redux/02_Actions/index.js"
+ import { getAllVideos, getAllGenres, getAllPlatforms } from "../../redux/02_Actions/index.js"
  import NavBar from '../03_Navbar/Navbar.js';
  import Card   from '../06_Card/Card.js'
  import Error  from '../09_Error/Error.js'
@@ -24,10 +24,23 @@ function Home() {
 
   const dispatch = useDispatch()
   const fil_Videos = useSelector((state) => state.fil_Videos)
- 
+  const all_Genres    = useSelector((state) => state.getAllGenres)
+  const all_Platforms = useSelector((state) => state.getAllPlatforms)
+
+  //Traer todos los videogames
   useEffect(() => {
     dispatch(getAllVideos());
   }, [dispatch])
+  
+  //Traer todos los generos y plataformas
+  useEffect(()=>{
+   dispatch(getAllGenres())
+  },[dispatch])  
+      
+  useEffect(() => {
+    dispatch(getAllPlatforms())
+  },[dispatch])  
+  
      
   //Evento click que recarga nuevamente todos los videogames
   function handleClick(e) {
@@ -41,14 +54,17 @@ function Home() {
 //Funcion que actualiza el estado de la pagina que se va a mostrar 
  const pages = ((pageNum) => {setCurrentPage(pageNum)})
 
-//Numero de Card mostrado por pagina (8)
+//Numero de Card mostrado por pagina (15)
  const cardPerPage = 15
 
 /*Codigo que me sirve para lo que se va extraer del arreglo y que se
  va a mostrar en el area de visusalizacion de Card en la ruta home.*/
  
- var fin = currentPage * cardPerPage // Primera página, fin = 1 * 8 = 8
- var ini = fin - cardPerPage         // Primera página, ini = 8 - 8 = 0
+// Pag=1, fin = 1 * 15 = 15  ini = 15 - 15 = 0  (0  - 15)
+// Pag=2, fin = 2 * 15 = 30  ini = 30 - 15 = 15 (15 - 30)
+// Pag=3, fin = 3 * 15 = 45  ini = 45 - 15 = 30 (30 - 45) .......
+ var fin = currentPage * cardPerPage 
+ var ini = fin - cardPerPage         
  
  var currentVideos = fil_Videos.slice(ini, fin) 
 /*Slice es una funcion de los arrays que permite extraer un parte del arreglo 
@@ -67,7 +83,7 @@ function Home() {
                  </button>
 
                  <button className='home_Btn'>
-                    <NavLink className ='home_Link' to='/add'>
+                    <NavLink className ='home_Link' to='/videogame/add'>
                        Create New Videogame
                    </NavLink>
                  </button>
