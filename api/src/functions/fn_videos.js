@@ -7,8 +7,16 @@ const {API_END_POINT_ALL_GAMES,
        API_END_POINT_FIL_ID,
        API_KEY} = process.env;
 
+
+function convertDateFormat(string) {
+  var info = string.split('-').reverse().join('/');
+  return info;
+}
+
 //Creacion de un Nuevo Video Juego. en la BD--------------------------------------
 async function Add_Video (req, res) {
+      // console.log("Body",req.body.platforms.join(", "));
+      // console.log("Body",convertDateFormat(req.body.released))
       const { name, description, released, rating, platforms, image, genres } = req.body;
       try {
         const newVideo = await Videogame.create(

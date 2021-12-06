@@ -9,6 +9,7 @@
       background-image: url('../../assets/videogame.png');    
       background-position: right;
       background-repeat: no-repeat;
+      
 } 
     
 .nav_Logo{
@@ -16,11 +17,6 @@
       background-repeat: no-repeat;
 }
         
-.nav_Logo:hover {
-      cursor: pointer;
-      text-decoration: underline; 
-}
-    
 .nav_Titulo {
       font-size: 1.5rem;
       color: white;

@@ -36,19 +36,21 @@ function VideoDetail(idVideo) {
                 <img src={vid_Det.background_image} className="image1"/>
                 <img src={vid_Det.background_image_additional} className="image2"/>
                 
-                <p className = 'genres1'>
-                  <strong className = 'gen1'>Genres :  </strong> {generos.join(', ')}
-                </p>
+                
+                   <p className = 'genres1'>
+                      <strong className = 'gen1'>Genres :  </strong> {generos.join(', ')}
+                   </p>
 
-                <p className = 'platform1'>
-                   <strong className = 'plat1'>Platforms : </strong> {plataformas.join(', ')}
-                </p>
+                   <p className = 'platform1'>
+                      <strong className = 'plat1'>Platforms : </strong> {plataformas.join(', ')}
+                   </p>
 
-                <p className = 'rating-released'>
-                   <strong className = 'rat1'>Rating : </strong>  {vid_Det.rating}
-                   <strong className = 'rat1'>   Released : </strong> {vid_Det.released}
-                </p>
-
+                   <p className = 'rating-released'>
+                      <strong className = 'rat1'>Rating : </strong>  {vid_Det.rating}
+                      <strong className = 'rat1'>   Released : </strong> {vid_Det.released}
+                   </p>
+                
+                
                 <div className="des_container">
                     <strong className = 'descrip'>D e s c r i p t i o n :  </strong>
                     <p className ="description">{descrip.substr(0,1000)}</p>

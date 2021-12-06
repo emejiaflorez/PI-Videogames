@@ -1,5 +1,5 @@
 .card_Container {
-      width: 19%;
+      width: 17%;
       display: flex;
       justify-content: center;
       position: relative;
@@ -7,13 +7,13 @@
       margin: 0.5%;
       padding: 0.5%;
       background-color: black;
-      border: 2px solid rgb(155, 153, 153);
+      border: 3px solid rgb(155, 153, 153);
       border-radius: 10px;
 }
    
  
 .card_Image {
-      width : 340px;
+      width : 320px;
       height: 230px;
       border-radius: 10px;
       position: absolute;

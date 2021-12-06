@@ -49,17 +49,15 @@ export function getVideoDetail(id) {
    }
 }
 
-export function addVideogame() {
-   return async (dispatch) => {
-      try {
-         
-         
-      } 
-      catch (error) {
-         console.log(error)
-      }
+export function addVideogame(newVideogame) {
+   return async function (dispatch) {
+     const newVideo = await axios.post(
+       'http://localhost:3001/videos/add', newVideogame
+     )
+     console.log(newVideo)
+     return newVideo
    }
-}
+ }
 
 export function getAllGenres() {
    return async (dispatch) => {
