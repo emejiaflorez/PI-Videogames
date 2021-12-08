@@ -1,6 +1,6 @@
-import { GET_ALL_VIDEOS,  GET_VIDEOS_BY_NAME, GET_VIDEO_DETAIL, ADD_VIDEOGAMES,
-         GET_ALL_GENRES,  GET_ALL_PLATFORMS,  FILTER_BY_GENRE,  FILTER_BY_VIDEO, 
-         ORDERING_ACTION, PAGING_ACTION } from '../01_Action_Types/index';
+import { GET_ALL_VIDEOS,    GET_VIDEOS_BY_NAME, GET_VIDEO_DETAIL, GET_ALL_GENRES,  
+         GET_ALL_PLATFORMS, FILTER_BY_GENRE,    FILTER_BY_NAME,   ORDERING_ACTION,   
+         PAGING_ACTION } from '../01_Action_Types/index';
 
 import axios from 'axios'
 
@@ -50,7 +50,7 @@ export function getVideoDetail(id) {
 }
 
 export function addVideogame(newVideogame) {
-   return async function (dispatch) {
+   return async function () {
      const newVideo = await axios.post(
        'http://localhost:3001/videos/add', newVideogame
      )
@@ -86,5 +86,20 @@ export function getAllPlatforms() {
       catch (error) {
          console.log(error)
       }
+   }
+}
+
+export function filterByGenre(id_Genre) {
+   return {
+      type: FILTER_BY_GENRE,
+      payload: id_Genre
+   }
+}
+
+
+export function orderingAction(tipo) {
+   return {
+      type: ORDERING_ACTION,
+      payload: tipo
    }
 }

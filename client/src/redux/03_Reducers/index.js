@@ -1,6 +1,6 @@
-import { GET_ALL_VIDEOS,  GET_VIDEOS_BY_NAME, GET_VIDEO_DETAIL, ADD_VIDEOGAMES,
-         GET_ALL_GENRES,  GET_ALL_PLATFORMS,  FILTER_BY_GENRE,  FILTER_BY_VIDEO, 
-         ORDERING_ACTION, PAGING_ACTION } from '../01_Action_Types/index';
+import { GET_ALL_VIDEOS,    GET_VIDEOS_BY_NAME, GET_VIDEO_DETAIL, GET_ALL_GENRES,  
+         GET_ALL_PLATFORMS, FILTER_BY_GENRE,    FILTER_BY_NAME,  ORDERING_ACTION, 
+         PAGING_ACTION } from '../01_Action_Types/index';
 
 // all_Videos: Array de objetos despliega todos los videos en el home
 // fil_Videos: Array de objetos despliega todos los filtros que se hacen desde el front
@@ -39,9 +39,36 @@ function rootReducer(state = initialState, action) {
                ...state,
                   all_Platforms: action.payload,
             }
+         
+          case FILTER_BY_GENRE:
+              if (action.payload === "All"){
+                 return {
+                   ...state, 
+                      fil_Videos : state.all_Videos
+                 }
+              }
+              else
+              {
+               const resul=[];
+               for (let i=0; i<state.all_Videos.length; i++){
+                   for (let j=0; j<state.all_Videos[i].genres.length; j++){
+                         if (state.all_Videos[i].genres[j].id==action.payload){
+                               resul.push(state.all_Videos[i])
+                         }
+                   }
+               }
+               console.log("action",action.payload)
+               console.log("yyyyyy",resul)
+               return {
+                   ...state, 
+                      fil_Videos : resul
+               }
+              }
+              
+              case ORDERING_ACTION:    
 
-          default:
-            return state
+            default:
+                 return state
    }
 }
  

@@ -15,28 +15,22 @@ function VideoDetail(idVideo) {
        dispatch(getVideoDetail(id))
     },[dispatch,id])
 
-    let descrip= vid_Det.description || " " 
-    let generos = []; 
-    let genres = vid_Det.genres || []; genres.map(e => generos.push(e.name));
-    var plataformas = []; 
-    let platfr = vid_Det.platforms || []; platfr.map(e => plataformas.push(e.platform.name));
-    
-    // if (isNaN(id)) {
-    //     plataformas=vid_Det.platforms
-    //  }else {
-    //    let platfr = vid_Det.platforms || []; platfr.map(e => plataformas.push(e.platform.name)); 
-    // }
-    
-    
-    
+    var descrip=""; var generos=[]; var plataformas=[]; var genres=[]; var platfr=[]
+    descrip= vid_Det.description || " " 
+    genres = vid_Det.genres || []; 
+    genres.map(e => generos.push(e.name)) 
+    platfr = vid_Det.platforms || [];
+
+    if (isNaN(id)) {platfr.map(e => plataformas.push(e.name));} 
+    else { platfr.map(e => {if (e.platform !== undefined){plataformas.push(e.platform.name)}});}
+      
     return (
         <div className = "container">
              <>
                 <h1 className="name">{vid_Det.name}</h1>
                 <img src={vid_Det.background_image} className="image1"/>
                 <img src={vid_Det.background_image_additional} className="image2"/>
-                
-                
+                                
                    <p className = 'genres1'>
                       <strong className = 'gen1'>Genres :  </strong> {generos.join(', ')}
                    </p>

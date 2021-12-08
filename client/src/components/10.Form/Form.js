@@ -19,6 +19,9 @@
       }
       OrdenamientoAsc(all_Genres,"name"); OrdenamientoAsc(all_Platforms,"name");
      
+      //Colocando el foco en el primer input del Form.****************************************
+      useEffect(() => {document.getElementById("id_Name").focus();}, [])
+
       //Estados locales del componente Form***************************************************
       const [form, setForm] = React.useState(
        {name:"", description: "", released:"", rating:"", platforms:[], image:"", genres:[]}
@@ -29,7 +32,7 @@
        setForm(
        {name:"", description:"", released:"", image:"",  rating:"",  genres:[], platforms:[]})
      }
-    
+         
      //Funcion que Valida la entradas requeridas del formulario********************************
      //Requireds : Name, Description, Platforms, Genres (no estoy seguro) 
      const validate_form = () => {
@@ -37,38 +40,39 @@
           return true ;   
        } else {
           if (form.name.length===0) {
-            console.log("The name of the video game is required")
-            alert("The name of the video game is required ");
+            alert(" Warnings !....The name of the video game is required ");
+            document.getElementById("id_Name").focus();
             return false;
           }
           if (form.description.length===0) {
-            alert("The description of the video game is required ");
+            document.getElementById("id_Description").focus();
+            alert(" Warnings !....The description of the video game is required ");
             return false;
           }   
           if (form.platforms.length===0) {
-
-            alert("The video game platforms is required");
+            document.getElementById("selectplatform").focus();
+            alert(" Warnings !....The video game platforms is required");
             return false;
           }
        }
      }
-
+    
     //Event Onchange Inputs Text****************************************************************
      const handleOnChange = (event) => {
-         setForm({
-           ...form,
-             [event.target.name]: event.target.value
-         })
+          setForm({
+            ...form,
+              [event.target.name]: event.target.value
+            })
      }
  
      //Event Onchange Select Text****************************************************************
-     const handleOnChangeSelect=(event) =>{ 
+     const handleOnChangeSelect = (event) => { 
         var selObj = document.getElementById(event.target.id);      
         var selectedArray = [];
         var count = 0;
         for ( var i = 1; i < selObj.options.length; i++) { 
               if (selObj.options[i].selected) {
-                  selectedArray[count] = selObj.options[i].value;
+                  selectedArray[count] = parseInt(selObj.options[i].value);
                   count++; 
               } 
         } 
@@ -85,6 +89,7 @@
           dispatch(addVideogame(form)); 
           alert("video game saved successfully");
           clear_form();
+          document.getElementById("id_Name").focus();
       }
     }
 
@@ -99,9 +104,11 @@
                        <input className="input"
                          type  ='text'
                          value = {form.name}
+                         id    = "id_Name"
                          name  = 'name'
                          placeholder = 'input name....(required)***'
                          onChange = {handleOnChange}
+                         required
                        />
                      </label>
 
@@ -119,17 +126,21 @@
                         <textarea className="inputDescription"
                           type  = 'text'
                           value = {form.description}
+                          id    = "id_Description"
                           name  = 'description'
                           placeholder = 'input description....(required)***'
                           onChange = {handleOnChange}
+                          required
                         />
                      </label>
 
                      <label className='label'>Rating
                         <input className="input"
-                          type  = 'text'
+                          type  = 'number'
                           value = {form.rating}
                           name  = 'rating'
+                          max   = '10'
+                          min   = '0'
                           placeholder = 'input rating....'
                           onChange = {handleOnChange}
                         />   
@@ -145,7 +156,7 @@
                      </label>
                      
                      <label className='label'>Genres
-                       <select id="selectgenres" name="genres" className="select" multiple 
+                       <select id = "selectgenres" name = "genres" className = "select" multiple 
                         onChange={handleOnChangeSelect}>
                            <option value="" disabled selected>GENRES SELECTION...</option>
                           {all_Genres.length > 0 && all_Genres.map(e =>

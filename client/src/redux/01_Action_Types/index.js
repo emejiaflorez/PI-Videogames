@@ -6,6 +6,6 @@ export const GET_ALL_GENRES     = "GET_ALL_GENRES";
 export const GET_ALL_PLATFORMS  = "GET_ALL_PLATFORMS";
 export const GET_VID_DETAIL     = "GET_VID_DETAIL";
 export const FILTER_BY_GENRE    = "FILTER_BY_GENRE";
-export const FILTER_BY_VIDEO    = "FILTER_BY_VIDEO";
+export const FILTER_BY_NAME     = "FILTER_BY_NAME";
 export const ORDERING_ACTION    = "ORDERING_ACTION";
 export const PAGING_ACTION      = "PAGING_ACTION";

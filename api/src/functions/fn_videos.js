@@ -1,27 +1,26 @@
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 const axios = require('axios');
-const { Videogame, Genre } = require("../db");
+const { Videogame, Genre, Platform } = require("../db");
 const {API_END_POINT_ALL_GAMES, 
        API_END_POINT_SEARCH_GAMES, 
        API_END_POINT_FIL_ID,
        API_KEY} = process.env;
 
 
-function convertDateFormat(string) {
-  var info = string.split('-').reverse().join('/');
-  return info;
-}
+// function convertDateFormat(string) {
+//   var info = string.split('-').reverse().join('/');
+//   return info;
+// }
 
 //Creacion de un Nuevo Video Juego. en la BD--------------------------------------
 async function Add_Video (req, res) {
-      // console.log("Body",req.body.platforms.join(", "));
-      // console.log("Body",convertDateFormat(req.body.released))
-      const { name, description, released, rating, platforms, image, genres } = req.body;
+      const { name, description, released, rating, image, genres, platforms } = req.body;
       try {
         const newVideo = await Videogame.create(
-            { name, description, released, rating, platforms, image});
+            { name, description, released, rating,  image});
         await newVideo.addGenres(genres);  
+        await newVideo.addPlatforms(platforms); 
         res.json(newVideo);
       } 
       catch (error) { res.send(error); }
@@ -41,17 +40,16 @@ async function Get_Videos (req, res){
         ? {where: { name :{[Op.like]: `%${name}%`} }}
         : {}
       
-      //condition.attributes = { exclude: ['createdAt','updatedAt'] }
-     
       //Consulta de Generos asociados a los videos desde la B.D
-      const dbVideos = await Videogame.findAll({include: Genre },condition);
+      const dbVideos = await Videogame.findAll({include: [Genre, Platform] }, condition);
       
-      //Traida de los Datos desde la Api_Externa.
-      const apiVideos = (await axios.get(url)).data.results;
+      //Traida de los Datos desde la Api_Externa.concatenando con la BD.
+      for (let i = 1; i < 3; i++){
+        const apiVideos = (await axios.get(url+`&page=${i}`)).data.results;
+        if (i===1) allVideos = apiVideos.concat(dbVideos);
+        else allVideos=apiVideos.concat(allVideos)
+      }
       
-      //Concatenar Arrays. de los datos filtrados desde la Api y BD. y respuesta
-      allVideos = apiVideos.concat(dbVideos);
-    
       !name 
         ? res.json(allVideos.length ? allVideos : 'Video games Not found ...')
         : res.json(allVideos.length ? allVideos.slice(0, 15) : 'Video games Not found ...');
@@ -64,9 +62,10 @@ async function Get_Video_ById (req, res){
   try {
     const { id } = req.params ;
     
+
   //Busqueda en la Base de Datos   
     if (isNaN(id)) {
-       const dbVideo = await Videogame.findOne({include : Genre},{ where: {id: id}}) 
+       const dbVideo = await Videogame.findByPk(id,{include : [Genre, Platform]})  
        res.json(dbVideo)
     }
     else 

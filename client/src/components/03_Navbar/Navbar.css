@@ -19,27 +19,42 @@
         
 .nav_Titulo {
       font-size: 1.5rem;
-      color: white;
+      color:white;
       border-color:#0f0f0f;
+}
+
+.nav_Titulo:hover {
+      color: rgb(228, 228, 97);
+      cursor: pointer;
 }
     
 .nav_Fil_Container {
       height: 50%;
       width: 40%;
-      display: flex;
-      align-items: center;
+      padding-right: 2em;
+      display:flexbox;
+      align-items: left;
 }
     
 .nav_Filter {
-      height: 80%;
-      width: 32%;
-      background-color: white;
-      border: 2px solid #0f0f0f;
-      padding: 5px;
-      border-radius:  10px;
-      font-size: 1.0rem;
-}
-    
-.nav_Filter:last-of-type {
-      width: 28%;
-}
+      width: 70%;
+      /* height: 80%; */
+      font-size:1.5rem;
+      border-radius:7px;
+      background-color:transparent;
+      color: Black;
+      border-color:gray;
+      padding-top: 0.1cm;
+      
+      
+ }
+
+ .nav_Filter:hover {
+      cursor: pointer;
+      background-color: black ;
+      color: red;
+      border: 1px solid gray;
+      border-color:red;
+ }
+
+ 

@@ -31,16 +31,16 @@
      border: 1px solid gray;
      border-radius: 0.70em;
      line-height: 2rem;
-     font-size:1rem;
+     font-size:1.3rem;
      padding-bottom: 0.5vh ;
      
 }
    
 .home_Btn:hover {
      cursor: pointer;
-     background-color: rgb(95, 93, 93) ;
-     color: #f3f1ed;
-     border: 1px solid #f3f1ed;
+     background-color: black ;
+     color: white;
+     border: 1px solid red;
 }
    
 .home_Link {

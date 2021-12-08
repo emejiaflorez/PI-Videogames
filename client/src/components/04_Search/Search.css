@@ -9,7 +9,7 @@
     }
     
 .search_Input {
-      /* border-color:black; */
+      border-color:black;
       background-color: transparent; 
       border:10cm;
       border-radius:0.2cm;
@@ -40,7 +40,7 @@
 .search_Btn:hover {
       cursor: pointer;
       background-color: transparent;
-      background-color: #0a0a0a;
-      color: white;
-      border: 1px solid #f3f1ed;
+      background-color: black ;
+      color: red;
+      border: 1px solid gray;
 }
