@@ -7,6 +7,23 @@ import { GET_ALL_VIDEOS,    GET_VIDEOS_BY_NAME, GET_VIDEO_DETAIL, GET_ALL_GENRES
 // Objeto que muestra el detalle de cada video seleccionado de una card
 const initialState = {all_Videos:[], fil_Videos:[], det_Video:{}, all_Genres:[], all_Platforms:[]}
 
+//ord=-1 or2=1 -> ASCENDENTENTE ord=1 or2=-1 -> DESCENDENTENTE
+const orden = (arrayObjects, atributo, ord1, ord2)=>{
+   return arrayObjects.sort((e1, e2) => {
+         if (atributo==="name"){
+             if (e1[atributo] < e2[atributo]) return ord1;
+             if (e1[atributo] > e2[atributo]) return ord2;
+             if (e1[atributo]===e2[atributo]) return  0; 
+         }
+         else 
+         {
+            if (ord1===-1) return e1.rating - e2.rating
+            else if (ord1=== 1) return e2.rating - e1.rating
+            else return 0
+         }
+   })
+}
+
 function rootReducer(state = initialState, action) {
    switch (action.type) {
          case GET_ALL_VIDEOS :
@@ -42,10 +59,7 @@ function rootReducer(state = initialState, action) {
          
           case FILTER_BY_GENRE:
               if (action.payload === "All"){
-                 return {
-                   ...state, 
-                      fil_Videos : state.all_Videos
-                 }
+                 return {...state, fil_Videos : state.all_Videos}
               }
               else
               {
@@ -57,18 +71,20 @@ function rootReducer(state = initialState, action) {
                          }
                    }
                }
-               console.log("action",action.payload)
-               console.log("yyyyyy",resul)
-               return {
-                   ...state, 
-                      fil_Videos : resul
-               }
+               return {...state, fil_Videos : resul}
               }
               
-              case ORDERING_ACTION:    
+          case ORDERING_ACTION: {
+                 switch (action.payload) {
+                     case "AZ"      : return {...state, fil_Videos: orden(state.fil_Videos,"name",-1, 1)}
+                     case "ZA"      : return {...state, fil_Videos: orden(state.fil_Videos,"name", 1,-1)}
+                     case "Rat_Asc" : return {...state, fil_Videos: orden(state.fil_Videos,"rating",-1, 0)}
+                     case "Rat_Des" : return {...state, fil_Videos: orden(state.fil_Videos,"rating", 1,0)}
+                     default : break;
+                 }
+          }
 
-            default:
-                 return state
+          default: return state
    }
 }
  

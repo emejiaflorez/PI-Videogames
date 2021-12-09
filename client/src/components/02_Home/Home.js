@@ -26,7 +26,6 @@ function Home() {
 
   const dispatch = useDispatch()
   const fil_Videos = useSelector((state) => state.fil_Videos)
-
     
   //Traer todos los videogames
   useEffect(() => {
@@ -83,7 +82,6 @@ var currentVideos = fil_Videos.slice(ini, fin);
 //el ultimo elemento fin no lo incluye y sin modificar el array original. 
 //var currentVideos = fil_Videos.slice(0, 15) los elem extraidos serian desde index=0
 //hasta el index fin-1 osea 14 */
-
 
 
  return (

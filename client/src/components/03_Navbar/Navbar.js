@@ -33,7 +33,7 @@ function NavBar( { filterGenre,  filterOrder } ) {
             <Search/>
 
             <div className='nav_Fil_Container'>
-              <select className ='nav_Filter' onChange={(e) => filterGenre(e)}>
+              <select className ='nav_Filter' onChange = {(e) => filterGenre(e)}>
                  <option value='All'>Filter All Genres...</option>
                  {all_Genres.length > 0 && all_Genres.map(e =>
                     <option value = {e.id}> {e.name} </option>
@@ -47,12 +47,12 @@ function NavBar( { filterGenre,  filterOrder } ) {
                 )} 
               </select>
     
-              <select className='nav_Filter' onChange={filterOrder}>
-                <option value='AZ'>Order by...</option>
-                <option value='AZ'>Name (Asc)</option>
-                <option value='ZA'>Name (Desc)</option>
-                <option value='Rating_Asc'>Rating (Asc)</option>
-                <option value='Rating_Desc'>Rating (Desc)</option>
+              <select className='nav_Filter' onChange = {(e) =>filterOrder(e)}>
+                <option value = '' >Order by...</option>
+                <option value = 'AZ'>Name (Asc)</option>
+                <option value = 'ZA'>Name (Desc)</option>
+                <option value = 'Rat_Asc'>Rating (Asc)</option>
+                <option value = 'Rat_Des'>Rating (Desc)</option>
               </select>
             </div>
           </div>
