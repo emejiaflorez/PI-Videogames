@@ -22,7 +22,7 @@ function NavBar( { filterGenre,  filterOrder } ) {
   useEffect(() => {
     dispatch(getAllVideos());
   }, [dispatch])
-
+  
   return (
           <div className='nav_Container'>
             <h1 className='nav_Logo' >

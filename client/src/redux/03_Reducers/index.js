@@ -1,6 +1,6 @@
 import { GET_ALL_VIDEOS,    GET_VIDEOS_BY_NAME, GET_VIDEO_DETAIL, GET_ALL_GENRES,  
-         GET_ALL_PLATFORMS, FILTER_BY_GENRE,    FILTER_BY_NAME,  ORDERING_ACTION, 
-         PAGING_ACTION } from '../01_Action_Types/index';
+         GET_ALL_PLATFORMS, FILTER_BY_GENRE,    ORDERING_ACTION, 
+       } from '../01_Action_Types/index';
 
 // all_Videos: Array de objetos despliega todos los videos en el home
 // fil_Videos: Array de objetos despliega todos los filtros que se hacen desde el front

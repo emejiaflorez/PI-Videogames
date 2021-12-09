@@ -2,7 +2,7 @@ import React from "react"
 import { NavLink } from "react-router-dom";
 import '../06_Card/Card.css'
 
-const Card_Video = ({id, name, image, genres }) => {
+const Card_Video = ({id, name, image, genres, rating }) => {
     let generos=[]; genres.map(e=> generos.push(e.name))
     return (
         <div className = 'card_Container' key = {id}>
@@ -12,6 +12,7 @@ const Card_Video = ({id, name, image, genres }) => {
                    <h3 className ='card_Name'> {name}</h3>
                </NavLink>
                <p className = 'card_Genres1'><strong className = 'card_Genres2'>Genres :  </strong>{generos.join(', ')}</p>
+               <p className = 'card_Genres1'><strong className = 'card_Genres2'>Rating :  </strong>{rating}</p>
            </div>
         </div>
     )

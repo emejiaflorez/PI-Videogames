@@ -26,11 +26,15 @@ function Home() {
 
   const dispatch = useDispatch()
   const fil_Videos = useSelector((state) => state.fil_Videos)
-    
+  
   //Traer todos los videogames
-  useEffect(() => {
+    useEffect(() => {
     dispatch(getAllVideos());
   }, [dispatch])
+
+  const [order, setOrder] = useState('')
+  //Uso del estado local para la paginacion en la ruta home.
+  const [currentPage, setCurrentPage] = useState(1) // empiezo en la pag 1
   
   //Traer todos los generos y plataformas
   useEffect(()=>{
@@ -45,20 +49,19 @@ function Home() {
   function handleClick(e) {
    e.preventDefault()
    dispatch(getAllVideos())
-}
+  }
 
 //Envio de funciones de Filtros por props del componente mayor: home a Navbar.
 function handleFilterGenre(event) {
-  console.log(event.target.value)
   dispatch(filterByGenre(event.target.value))
 }
 
 function handleFilterOrder(event){
- dispatch(orderingAction(event.target.value))
+  event.preventDefault()
+  dispatch(orderingAction(event.target.value))
+  setCurrentPage(1)
+  setOrder(event.target.value)
 }
-
-//Uso del estado local para la paginacion en la ruta home.
- const [currentPage, setCurrentPage] = useState(1) // empiezo en la pag 1
 
 //Funcion que actualiza el estado de la pagina que se va a mostrar 
  const pages = ((pageNum) => {setCurrentPage(pageNum)})
@@ -82,7 +85,6 @@ var currentVideos = fil_Videos.slice(ini, fin);
 //el ultimo elemento fin no lo incluye y sin modificar el array original. 
 //var currentVideos = fil_Videos.slice(0, 15) los elem extraidos serian desde index=0
 //hasta el index fin-1 osea 14 */
-
 
  return (
        <div className ='home_Container'>
@@ -112,6 +114,7 @@ var currentVideos = fil_Videos.slice(ini, fin);
                             name   = {e.name}
                             image  = {e.background_image}
                             genres = {e.genres || []}
+                            rating = {e.rating}
                         />
                       ))
                   ) : (<Error  text = {'Videogames not found. please try again'} /> )

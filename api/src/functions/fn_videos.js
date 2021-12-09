@@ -44,7 +44,7 @@ async function Get_Videos (req, res){
       const dbVideos = await Videogame.findAll({include: [Genre, Platform] }, condition);
       
       //Traida de los Datos desde la Api_Externa.concatenando con la BD.
-      for (let i = 1; i < 3; i++){
+      for (let i = 1; i < 5; i++){
         const apiVideos = (await axios.get(url+`&page=${i}`)).data.results;
         if (i===1) allVideos = apiVideos.concat(dbVideos);
         else allVideos=apiVideos.concat(allVideos)
