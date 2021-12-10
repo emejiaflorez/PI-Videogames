@@ -5,7 +5,7 @@ import { getVideosByName } from '../../redux/02_Actions/index.js'
 import '../04_Search/Search.css'
 
 function Search() {
-    useEffect(() => {document.getElementById("inputText").focus();}, [])
+    // useEffect(() => {document.getElementById("inputText").focus();}, [])
     
     const dispatch = useDispatch()
     
@@ -31,6 +31,7 @@ function Search() {
                  value={input}
                  placeholder='Search by names...'
                  onChange = {handleOnChange}
+                 autoFocus
              />
              <button 
                  className='search_Btn' 

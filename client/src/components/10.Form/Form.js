@@ -1,4 +1,4 @@
- import React, { useState, useEffect } from 'react';
+ import React, { useState, useEffect, useRef } from 'react';
  import { useDispatch, useSelector } from 'react-redux';
  import { NavLink } from "react-router-dom";
  import { addVideogame } from "../../redux/02_Actions/index.js"
@@ -9,6 +9,8 @@
       const  all_Genres    = useSelector((state) => state.all_Genres)
       const  all_Platforms = useSelector((state) => state.all_Platforms)
       
+      const inputName = useRef(null); const inputDescription=useRef(null); const selectPlatform = useRef(null);
+
       //Funcion de Orden de los dos arrglos de objetos lexicograficamente x Atributo name Asc.
       const OrdenamientoAsc = (arrayObjects, atributo)=>{
          arrayObjects.sort((e1, e2) => {
@@ -20,7 +22,9 @@
       OrdenamientoAsc(all_Genres,"name"); OrdenamientoAsc(all_Platforms,"name");
      
       //Colocando el foco en el primer input del Form.****************************************
-      useEffect(() => {document.getElementById("id_Name").focus();}, [])
+       useEffect(() => {
+         inputName.current.focus();
+       }, [])
 
       //Estados locales del componente Form***************************************************
       const [form, setForm] = React.useState(
@@ -41,16 +45,16 @@
        } else {
           if (form.name.length===0) {
             alert(" Warnings !....The name of the video game is required ");
-            document.getElementById("id_Name").focus();
+            inputName.current.focus();
             return false;
           }
           if (form.description.length===0) {
-            document.getElementById("id_Description").focus();
+            inputDescription.current.focus();
             alert(" Warnings !....The description of the video game is required ");
             return false;
           }   
           if (form.platforms.length===0) {
-            document.getElementById("selectplatform").focus();
+            selectPlatform.current.focus();
             alert(" Warnings !....The video game platforms is required");
             return false;
           }
@@ -87,9 +91,9 @@
       event.preventDefault()
       if (validate_form()===true){
           dispatch(addVideogame(form)); 
-          alert("video game saved successfully");
+          alert("Videogame SAVED successfully....");
           clear_form();
-          document.getElementById("id_Name").focus();
+          inputName.current.focus();
       }
     }
 
@@ -108,8 +112,9 @@
                          name  = 'name'
                          placeholder = 'input name....(required)***'
                          onChange = {handleOnChange}
+                         ref = {inputName}
                          required
-                       />
+                      />
                      </label>
 
                      <label className='label'>Image
@@ -130,6 +135,7 @@
                           name  = 'description'
                           placeholder = 'input description....(required)***'
                           onChange = {handleOnChange}
+                          ref = {inputDescription}
                           required
                         />
                      </label>
@@ -156,20 +162,32 @@
                      </label>
                      
                      <label className='label'>Genres
-                       <select id = "selectgenres" name = "genres" className = "select" multiple 
-                        onChange={handleOnChangeSelect}>
-                           <option value="" disabled selected>GENRES SELECTION...</option>
-                          {all_Genres.length > 0 && all_Genres.map(e =>
-                               <option key={e.id} value={e.id}>{e.name}</option>)}  
-                       </select>
+                         <select 
+                             id = "selectgenres" 
+                             name = "genres" 
+                             className = "select" 
+                             multiple 
+                             onChange={handleOnChangeSelect}>
+                            <option value="" disabled selected>GENRES SELECTION...</option>
+                             {all_Genres.length > 0 && all_Genres.map(e =>
+                                 <option key={e.id} value={e.id}>{e.name}</option>
+                             )}  
+                          </select>
                       </label>
 
                       <label className='label'>Platforms
-                       <select id="selectplatform" name="platforms" className="select" multiple  onChange = {handleOnChangeSelect}>
-                          <option value="" disabled selected>PLATFORMS SELECTION...(required)***</option>
-                          {all_Platforms.length > 0 && all_Platforms.map(e =>
-                               <option key={e.id} value={e.id}>{e.name}</option>)}  
-                       </select>
+                          <select 
+                             ref = {selectPlatform}
+                             id  ="selectplatform" 
+                             name="platforms" 
+                             className="select" 
+                             multiple 
+                             onChange = {handleOnChangeSelect}>
+                            <option value="" disabled selected>PLATFORMS SELECTION...(required)***</option>
+                             {all_Platforms.length > 0 && all_Platforms.map(e =>
+                               <option key={e.id} value={e.id}>{e.name}</option>
+                              )}  
+                          </select>
                       </label>
 
                   </div>

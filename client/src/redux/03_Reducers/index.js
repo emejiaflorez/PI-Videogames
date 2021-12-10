@@ -1,5 +1,5 @@
-import { GET_ALL_VIDEOS,    GET_VIDEOS_BY_NAME, GET_VIDEO_DETAIL, GET_ALL_GENRES,  
-         GET_ALL_PLATFORMS, FILTER_BY_GENRE,    ORDERING_ACTION, 
+import { GET_ALL_VIDEOS,    GET_VIDEOS_BY_NAME, GET_VIDEO_DETAIL,   GET_ALL_GENRES,  
+         GET_ALL_PLATFORMS, FILTER_BY_GENRE,    FILTER_BY_PLATFORM, ORDERING_ACTION, 
        } from '../01_Action_Types/index';
 
 // all_Videos: Array de objetos despliega todos los videos en el home
@@ -73,7 +73,26 @@ function rootReducer(state = initialState, action) {
                }
                return {...state, fil_Videos : resul}
               }
-              
+          
+          case FILTER_BY_PLATFORM:
+            if (action.payload === "All"){
+               return {...state, fil_Videos : state.all_Videos}
+             }
+             else
+             {
+                const resul=[];
+                for (let i=0; i<state.all_Videos.length; i++){
+                    for (let j=0; j<state.all_Videos[i].platforms.length; j++){
+                        if (!isNaN(state.all_Videos[i].id)) {
+                           if (state.all_Videos[i].platforms[j].platform.id==action.payload){
+                              resul.push(state.all_Videos[i])
+                        }
+                     }
+                 }
+                }
+                 return {...state, fil_Videos : resul}
+             }   
+            
           case ORDERING_ACTION: {
                  switch (action.payload) {
                      case "AZ"      : return {...state, fil_Videos: orden(state.fil_Videos,"name",-1, 1)}

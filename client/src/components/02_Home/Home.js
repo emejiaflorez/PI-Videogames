@@ -1,8 +1,8 @@
  import React, { useState, useEffect } from 'react'
  import { useDispatch, useSelector } from 'react-redux'
  import { NavLink } from "react-router-dom";
- import { getAllVideos,  getAllGenres, getAllPlatforms, 
-          filterByGenre, orderingAction
+ import { getAllVideos,  getAllGenres,     getAllPlatforms, 
+          filterByGenre, filterByPlatform, orderingAction
         } from "../../redux/02_Actions/index.js"
  import NavBar from '../03_Navbar/Navbar.js';
  import Card   from '../06_Card/Card.js'
@@ -29,10 +29,13 @@ function Home() {
   
   //Traer todos los videogames
     useEffect(() => {
-    dispatch(getAllVideos());
-  }, [dispatch])
+        dispatch(getAllVideos());
+        setCurrentPage(1)
+        setLoad(false)
+    }, [dispatch])
 
-  const [order, setOrder] = useState('')
+  const [order, setOrder] = useState('');
+  const [load, setLoad] = useState(false);
   //Uso del estado local para la paginacion en la ruta home.
   const [currentPage, setCurrentPage] = useState(1) // empiezo en la pag 1
   
@@ -49,11 +52,20 @@ function Home() {
   function handleClick(e) {
    e.preventDefault()
    dispatch(getAllVideos())
+   setLoad(false)
   }
 
 //Envio de funciones de Filtros por props del componente mayor: home a Navbar.
 function handleFilterGenre(event) {
   dispatch(filterByGenre(event.target.value))
+  setCurrentPage(1)
+  setLoad(true)
+}
+
+function handleFilterPlatform(event) {
+  dispatch(filterByPlatform(event.target.value))
+  setCurrentPage(1)
+  setLoad(true)
 }
 
 function handleFilterOrder(event){
@@ -61,6 +73,7 @@ function handleFilterOrder(event){
   dispatch(orderingAction(event.target.value))
   setCurrentPage(1)
   setOrder(event.target.value)
+  setLoad(true)
 }
 
 //Funcion que actualiza el estado de la pagina que se va a mostrar 
@@ -89,8 +102,9 @@ var currentVideos = fil_Videos.slice(ini, fin);
  return (
        <div className ='home_Container'>
             <NavBar
-              filterGenre = {handleFilterGenre} 
-              filterOrder = {handleFilterOrder}
+              filterGenre    = {handleFilterGenre} 
+              filterPlatform = {handleFilterPlatform} 
+              filterOrder    = {handleFilterOrder}
             />
             
             <div className ='home_Btn_Container'>
@@ -106,7 +120,8 @@ var currentVideos = fil_Videos.slice(ini, fin);
             </div>
             
             <div className='home_VideoContainer'>
-                  {currentVideos.length ? (
+                 {
+                   currentVideos.length ? (
                      currentVideos.map((e) => (
                          <Card
                             key    = {e.id} 
@@ -117,8 +132,19 @@ var currentVideos = fil_Videos.slice(ini, fin);
                             rating = {e.rating}
                         />
                       ))
-                  ) : (<Error  text = {'Videogames not found. please try again'} /> )
-                  }
+                    ) 
+                    : 
+                     !load 
+                       ? (<Error 
+                             text1={'Wait'} 
+                             text2 = {'Cargando Videogames....'} 
+                          /> ) 
+                       : (<Error 
+                             text1={'An error has occurred...'} 
+                             text2 = {'Videogames not found. please try again'} 
+                         /> )
+                         
+                 }
             </div>
 
             <Pages 

@@ -4,7 +4,7 @@ import Search from '../04_Search/Search.js';
 import { getAllVideos} from "../../redux/02_Actions/index.js"
 import { useDispatch, useSelector } from 'react-redux'
 
-function NavBar( { filterGenre,  filterOrder } ) {
+function NavBar( { filterGenre,  filterPlatform, filterOrder } ) {
   const  all_Genres = useSelector((state) => state.all_Genres);
   const  all_Platforms = useSelector((state) => state.all_Platforms);
   
@@ -40,7 +40,7 @@ function NavBar( { filterGenre,  filterOrder } ) {
                  )} 
               </select>
 
-              <select className='nav_Filter' >
+              <select className='nav_Filter' onChange={(e) => filterPlatform(e)}>
                 <option value='All'>Filter All Platforms...</option>
                 {all_Genres.length > 0 && all_Platforms.map(e =>
                     <option value = {e.id}> {e.name} </option>

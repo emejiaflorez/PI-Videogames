@@ -1,6 +1,6 @@
-import { GET_ALL_VIDEOS,    GET_VIDEOS_BY_NAME, GET_VIDEO_DETAIL, GET_ALL_GENRES,  
-         GET_ALL_PLATFORMS, FILTER_BY_GENRE,    FILTER_BY_NAME,   ORDERING_ACTION,   
-         PAGING_ACTION } from '../01_Action_Types/index';
+import { GET_ALL_VIDEOS,    GET_VIDEOS_BY_NAME, GET_VIDEO_DETAIL,   GET_ALL_GENRES,  
+         GET_ALL_PLATFORMS, FILTER_BY_GENRE,    FILTER_BY_PLATFORM, ORDERING_ACTION,   
+       } from '../01_Action_Types/index';
 
 import axios from 'axios'
 
@@ -96,6 +96,12 @@ export function filterByGenre(id_Genre) {
    }
 }
 
+export function filterByPlatform(id_Platform) {
+   return {
+      type: FILTER_BY_PLATFORM,
+      payload: id_Platform
+   }
+}
 
 export function orderingAction(tipo) {
    return {
